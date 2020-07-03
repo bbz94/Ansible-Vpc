@@ -1,25 +1,28 @@
-- name: create a network
+- name: Create VPC
+  hosts: local
+  gather_facts: False
   vars_files:
     - gce_vars/auth
     - gce_vars/zone
   vars:
     ansible_python_interpreter: /usr/bin/python3
-  gcp_compute_network:
-    name: network-subnetwork
-    auto_create_subnetworks: 'true'
-    project: "{{ project }}"
-    auth_kind: "{{ auth_kind }}"
-    service_account_file: "{{ credentials_file }}"
-    state: present
-  register: network
-
-- name: create a subnetwork
-  gcp_compute_subnetwork:
-    name: ansiblenet
-    region: "{{ region }}"
-    network: "{{ network }}"
-    ip_cidr_range: 172.16.0.0/16
-    project: "{{ project }}"
-    auth_kind: "{{ auth_kind }}"
-    service_account_file: "{{ credentials_file }}"
-    state: present
+  tasks:
+    - name: create a network
+    gcp_compute_network:
+      name: network-subnetwork
+      auto_create_subnetworks: 'true'
+      project: "{{ project }}"
+      auth_kind: "{{ auth_kind }}"
+      service_account_file: "{{ credentials_file }}"
+      state: present
+    register: network
+    - name: create a subnetwork
+      gcp_compute_subnetwork:
+        name: ansiblenet
+        region: "{{ region }}"
+        network: "{{ network }}"
+        ip_cidr_range: 172.16.0.0/16
+        project: "{{ project }}"
+        auth_kind: "{{ auth_kind }}"
+        service_account_file: "{{ credentials_file }}"
+        state: present
