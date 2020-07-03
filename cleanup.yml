@@ -7,7 +7,7 @@
   vars:
     ansible_python_interpreter: /usr/bin/python
   tasks:
-        - name: Destroy a subnetwork
+      - name: Destroy a subnetwork
         gcp_compute_subnetwork:
           name: ansiblenet
           project: "{{ project }}"
