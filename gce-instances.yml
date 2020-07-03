@@ -9,7 +9,7 @@
   tasks:
     - name: create a network
     gcp_compute_network:
-      name: network-subnetwork
+      name: networksubnetwork
       auto_create_subnetworks: 'true'
       project: "{{ project }}"
       auth_kind: "{{ auth_kind }}"
