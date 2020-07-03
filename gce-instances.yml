@@ -7,22 +7,22 @@
   vars:
     ansible_python_interpreter: /usr/bin/python3
   tasks:
-    - name: create a network
-    gcp_compute_network:
-      name: networksubnetwork
-      auto_create_subnetworks: 'true'
-      project: "{{ project }}"
-      auth_kind: "{{ auth_kind }}"
-      service_account_file: "{{ credentials_file }}"
-      state: present
-    register: network
-    - name: create a subnetwork
-      gcp_compute_subnetwork:
-        name: ansiblenet
-        region: "{{ region }}"
-        network: "{{ network }}"
-        ip_cidr_range: 172.16.0.0/16
-        project: "{{ project }}"
-        auth_kind: "{{ auth_kind }}"
-        service_account_file: "{{ credentials_file }}"
-        state: present
+      - name: create a network
+        gcp_compute_network:
+          name: network_subnetwork
+          auto_create_subnetworks: 'true'
+          project: "{{ project }}"
+          auth_kind: "{{ auth_kind }}"
+          service_account_file: "{{ credentials_file }}"
+          state: present
+        register: network
+      - name: create a subnetwork
+        gcp_compute_subnetwork:
+          name: ansiblenet
+          region: "{{ region }}"
+          network: "{{ network }}"
+          ip_cidr_range: 172.16.0.0/16
+          project: "{{ project }}"
+          auth_kind: "{{ auth_kind }}"
+          service_account_file: "{{ credentials_file }}"
+          state: present
