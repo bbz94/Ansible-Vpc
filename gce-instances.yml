@@ -21,7 +21,7 @@
           name: ansiblenet
           region: "{{ region }}"
           network: "{{ network }}"
-          ip_cidr_range: 172.16.0.0/16
+          ip_cidr_range: 10.164.4.48/28
           project: "{{ project }}"
           auth_kind: "{{ auth_kind }}"
           service_account_file: "{{ credentials_file }}"
