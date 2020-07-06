@@ -10,7 +10,7 @@
       - name: create a network
         gcp_compute_network:
           name: network-subnetwork
-          auto_create_subnetworks: 'true'
+          auto_create_subnetworks: 'false'
           project: "{{ project }}"
           auth_kind: "{{ auth_kind }}"
           service_account_file: "{{ credentials_file }}"
