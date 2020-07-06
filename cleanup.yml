@@ -11,7 +11,7 @@
         gcp_compute_subnetwork:
           name: ansiblenet2
           region: "{{ region }}"
-          network: "{{ network }}"
+          network: network-subnetwork
           ip_cidr_range: 10.164.5.48/28
           project: "{{ project }}"
           auth_kind: "{{ auth_kind }}"
