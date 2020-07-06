@@ -18,7 +18,7 @@
         register: network
       - name: create a subnetwork
         gcp_compute_subnetwork:
-          name: ansiblenet
+          name: ansiblenet2
           region: "{{ region }}"
           network: "{{ network }}"
           ip_cidr_range: 10.164.5.49/28
