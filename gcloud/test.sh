@@ -1,1 +1,2 @@
 echo vorkritest
+echo $argument
