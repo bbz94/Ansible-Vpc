@@ -26,3 +26,5 @@
           auth_kind: "{{ auth_kind }}"
           service_account_file: "{{ credentials_file }}"
           state: present
+      - name: Run a script with arguments (free form)
+        script: /some/local/script.sh --some-argument 1234
