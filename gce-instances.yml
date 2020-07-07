@@ -9,7 +9,7 @@
   tasks:
       - name: create a network
         gcp_compute_network:
-          name: aisarch-common-host
+          name: "{{ sharedvpcname }}"
           auto_create_subnetworks: 'false'
           project: "{{ project }}"
           auth_kind: "{{ auth_kind }}"
@@ -18,10 +18,10 @@
         register: network
       - name: create a subnetwork
         gcp_compute_subnetwork:
-          name: testvpc2
+          name: "{{ subnetname }}"
           region: "{{ region }}"
           network: "{{ network }}"
-          ip_cidr_range: 10.164.4.48/28
+          ip_cidr_range: "{{ subnetaddress }}"
           project: "{{ project }}"
           auth_kind: "{{ auth_kind }}"
           service_account_file: "{{ credentials_file }}"
