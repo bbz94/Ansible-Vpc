@@ -27,4 +27,4 @@
           service_account_file: "{{ credentials_file }}"
           state: present
       - name: Run a script with arguments (free form)
-        script: /some/local/script.sh --some-argument 1234
+        script: /root/Ansible-Vpc/gcloud/test.sh --some-argument 1234
