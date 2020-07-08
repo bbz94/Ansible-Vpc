@@ -6,7 +6,7 @@ networkuser=$4
 subnetname=$5
 region=$6
 replace_user=kristians.voronics@if.lv
-replace_etag=ACAB
+replace_etag=BwWp6v8fxEo=
 subnet_policy_path=/root/Ansible-Vpc/subnet-policy.json 
 
 
