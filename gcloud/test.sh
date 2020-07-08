@@ -3,6 +3,12 @@ credentials_file=$1
 sharedvpcprojectid=$2
 serviceprojectid=$3
 networkuser=$4
+subnetname=$5
+region=$6
+replace_user=kristians.voronics@if.lv
+replace_etag=ACAB
+subnet_policy_path=/root/Ansible-Vpc/subnet-policy.json 
+
 
 # Auth
 cd "/mnt/c/Program Files (x86)/Google/Cloud SDK/google-cloud-sdk/bin"
@@ -12,9 +18,15 @@ bash gcloud auth activate-service-account id-vpc-network-peering@aisarch-securit
 bash gcloud compute shared-vpc associated-projects add $serviceprojectid --host-project=$sharedvpcprojectid
 
 # Service Project Admins for all subnets
-bash gcloud projects add-iam-policy-binding $sharedvpcprojectid --member $networkuser --role "roles/compute.networkUser"
+sed -i "s/replace_user/$replace_user/g" $subnet_policy_path
+sed -i "s/replace_etag/$replace_etag/g" $subnet_policy_path
+bash gcloud compute networks subnets set-iam-policy $subnetname $subnet_policy_path --region $region --project $sharedvpcprojectid
 
 echo $credentials_file
 echo $sharedvpcprojectid
 echo $serviceprojectid
 echo $networkuser
+echo $subnetname
+echo $region
+echo $replace_user
+echo $subnet_policy_path

@@ -1,0 +1,11 @@
+{
+  "bindings": [
+    {
+      "members": [
+        "user:replace_user"
+      ],
+      "role": "roles/compute.networkUser"
+    }
+  ],
+  "etag": "replace_etag"
+}
