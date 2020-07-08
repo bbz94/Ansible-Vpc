@@ -7,5 +7,5 @@
       "role": "roles/compute.networkUser"
     }
   ],
-  "etag": "replace_etag"
+  "etag": replace_etag
 }
