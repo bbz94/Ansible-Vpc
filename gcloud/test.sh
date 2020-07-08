@@ -2,7 +2,7 @@
 credentials_file=$1
 sharedvpcprojectid=$2
 serviceprojectid=$3
-subnetname=$4
+networkuser=$4
 
 # Auth
 cd "/mnt/c/Program Files (x86)/Google/Cloud SDK/google-cloud-sdk/bin"
@@ -11,7 +11,10 @@ bash gcloud auth activate-service-account id-vpc-network-peering@aisarch-securit
 # Attach project to shared VPC
 bash gcloud compute shared-vpc associated-projects add $serviceprojectid --host-project=$sharedvpcprojectid
 
+# Service Project Admins for all subnets
+bash gcloud projects add-iam-policy-binding $sharedvpcprojectid --member $networkuser --role "roles/compute.networkUser"
+
 echo $credentials_file
 echo $sharedvpcprojectid
 echo $serviceprojectid
-echo $subnetname
+echo $networkuser
