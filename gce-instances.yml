@@ -27,6 +27,6 @@
           service_account_file: "{{ credentials_file }}"
           state: present
       - name: Run a script with arguments (free form)
-        script: /root/Ansible-Vpc/gcloud/test.sh {{ credentials_file }} {{ project }} {{ subnetname }}
+        script: /root/Ansible-Vpc/gcloud/test.sh {{ credentials_file }} {{ sharedvpcprojectid }} {{ serviceprojectid }} {{ subnetname }}
         register: output
       - debug: var=output
