@@ -28,5 +28,6 @@
           state: present
       - name: Run a script with arguments (free form)
         script: /root/Ansible-Vpc/gcloud/test.sh {{ credentials_file }} {{ project }} {{ subnetname }}
+        sudo: no
         register: output
       - debug: var=output
