@@ -9,7 +9,7 @@ cd "/mnt/c/Program Files (x86)/Google/Cloud SDK/google-cloud-sdk/bin"
 bash gcloud auth activate-service-account id-vpc-network-peering@aisarch-security-hub-prod.iam.gserviceaccount.com --key-file=$credentials_file
 
 # Attach project to shared VPC
-gcloud compute shared-vpc associated-projects add $serviceprojectid --host-project=$sharedvpcprojectid
+bash gcloud compute shared-vpc associated-projects add $serviceprojectid --host-project=$sharedvpcprojectid
 
 echo $credentials_file
 echo $sharedvpcprojectid
