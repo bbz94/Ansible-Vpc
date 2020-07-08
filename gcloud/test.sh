@@ -1,2 +1,2 @@
 echo vorkritest
-echo $*
+echo $ 1
