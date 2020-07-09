@@ -19,7 +19,7 @@
           region: "{{ region }}"
           network: "{{ network }}"
           ip_cidr_range: "{{ subnetaddress }}"
-          project: "{{ project }}"
+          project: "{{ sharedvpcprojectid }}"
           auth_kind: "{{ auth_kind }}"
           service_account_file: "{{ credentials_file }}"
           state: present
