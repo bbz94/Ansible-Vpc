@@ -5,7 +5,6 @@ serviceprojectid=$3
 networkuser=$4
 subnetname=$5
 region=$6
-replace_user=kristians.voronics@if.lv
 subnet_policy_path=/root/Ansible-Vpc/subnet-policy.json 
 
 
@@ -17,7 +16,7 @@ bash gcloud auth activate-service-account id-vpc-network-peering@aisarch-securit
 etag=$(bash gcloud compute networks subnets get-iam-policy $subnetname --region $region --project $sharedvpcprojectid --format json | jq .etag)
 
 # Service Project Admins for all subnets
-sed -i "s/replace_user/$replace_user/g" $subnet_policy_path
+sed -i "s/replace_user/$networkuser/g" $subnet_policy_path
 sed -i "s/replace_etag/$etag/g" $subnet_policy_path
 bash gcloud compute networks subnets set-iam-policy $subnetname $subnet_policy_path --region $region --project $sharedvpcprojectid
 
@@ -27,7 +26,6 @@ echo $serviceprojectid
 echo $networkuser
 echo $subnetname
 echo $region
-echo $replace_user
 echo $subnet_policy_path
 
 
