@@ -1,9 +1,6 @@
 - name: Create VPC
   hosts: local
   gather_facts: False
-  vars_files:
-    - gce_vars/auth
-    - gce_vars/zone
   vars:
     ansible_python_interpreter: /usr/bin/python
   tasks:
@@ -26,7 +23,7 @@
           auth_kind: "{{ auth_kind }}"
           service_account_file: "{{ credentials_file }}"
           state: present
-      - name: Run a script with arguments (free form)
-        script: /root/Ansible-Vpc/gcloud/test.sh {{ credentials_file }} {{ sharedvpcprojectid }} {{ serviceprojectid }} {{ networkuser }} {{ subnetname }} {{ region }}  
+      - name: Run a script with arguments 
+        script: /root/Ansible-Vpc/gcloud/shared_vpc_automaiton.sh {{ credentials_file }} {{ sharedvpcprojectid }} {{ serviceprojectid }} {{ networkuser }} {{ subnetname }} {{ region }}  
         register: output
       - debug: var=output
